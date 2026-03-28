@@ -1,9 +1,26 @@
 const generateBtn = document.getElementById('generate-btn');
 const numberSpans = document.querySelectorAll('.number');
+const themeToggle = document.getElementById('theme-toggle');
 
 /**
- * Generates a set of 6 unique random numbers between 1 and 45.
- * @returns {number[]} Array of unique numbers sorted ascending.
+ * Theme Management
+ */
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', savedTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+themeToggle.addEventListener('click', toggleTheme);
+
+/**
+ * Lotto Logic
  */
 function generateLottoNumbers() {
     const numbers = new Set();
@@ -13,14 +30,10 @@ function generateLottoNumbers() {
     return Array.from(numbers).sort((a, b) => a - b);
 }
 
-/**
- * Animates the number generation process.
- */
 async function animateNumbers() {
     generateBtn.disabled = true;
     const finalNumbers = generateLottoNumbers();
     
-    // Clear previous state
     numberSpans.forEach(span => {
         span.classList.remove('active');
         span.textContent = '?';
@@ -29,7 +42,6 @@ async function animateNumbers() {
     for (let i = 0; i < numberSpans.length; i++) {
         const span = numberSpans[i];
         
-        // Rolling effect
         let rolls = 0;
         const maxRolls = 10;
         const rollInterval = setInterval(() => {
@@ -42,7 +54,6 @@ async function animateNumbers() {
             }
         }, 50);
 
-        // Wait for roll to finish before starting next one
         await new Promise(resolve => setTimeout(resolve, 300));
     }
 
@@ -50,3 +61,6 @@ async function animateNumbers() {
 }
 
 generateBtn.addEventListener('click', animateNumbers);
+
+// Initialize
+initTheme();
