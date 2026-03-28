@@ -16,7 +16,7 @@ const OFFICIAL_STATS = {
     41: 165, 42: 178, 43: 197, 44: 185, 45: 193
 };
 
-const OFFICIAL_LAST_RESULT = [8, 10, 15, 20, 29, 31];
+const OFFICIAL_LAST_RESULT = [8, 10, 15, 20, 29, 31, 41];
 
 /**
  * Persistence & Data Loading
@@ -75,10 +75,10 @@ function generateSmartNumbers() {
     const hotPool = sortedEntries.slice(0, 15).map(e => parseInt(e[0]));
     const coldPool = sortedEntries.slice(-15).map(e => parseInt(e[0]));
     
-    // Weighted Recommendation:
-    // 2 numbers from Hot pool (Historical favorites)
-    // 2 numbers from Cold pool (Due for a win?)
-    // 2 numbers from Neutral (Balance)
+    // Weighted Recommendation (Now 7 Numbers total):
+    // 2 numbers from Hot pool
+    // 2 numbers from Cold pool
+    // 3 numbers from Neutral/Random
     
     // Pick 2 Hot
     while (numbers.size < 2) {
@@ -88,12 +88,14 @@ function generateSmartNumbers() {
     while (numbers.size < 4) {
         numbers.add(coldPool[Math.floor(Math.random() * coldPool.length)]);
     }
-    // Pick 2 Random
-    while (numbers.size < 6) {
+    // Pick 3 Random to make it 7
+    while (numbers.size < 7) {
         const rand = Math.floor(Math.random() * 45) + 1;
         numbers.add(rand);
     }
     
+    // Sort first 6 and keep the 7th as 'bonus recommendation' or just sort all
+    // Let's sort all 7 as requested by the user
     return Array.from(numbers).sort((a, b) => a - b);
 }
 
