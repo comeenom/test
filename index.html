@@ -1,14 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LottoGen Pro | Smart Lottery Number Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div class="app-wrapper">
+        <main class="container">
+            <header class="header">
+                <div class="logo-icon">✨</div>
+                <h1>LottoGen Pro</h1>
+                <p class="subtitle">Your next winning numbers are just a click away.</p>
+            </header>
+            
+            <section class="generator-section">
+                <div class="lotto-numbers" id="lotto-display">
+                    <span class="number">?</span>
+                    <span class="number">?</span>
+                    <span class="number">?</span>
+                    <span class="number">?</span>
+                    <span class="number">?</span>
+                    <span class="number">?</span>
+                </div>
+                
+                <div class="controls">
+                    <button id="generate-btn" class="primary-btn">
+                        <span class="btn-text">Generate Numbers</span>
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </div>
+            </section>
+            
+            <footer class="footer">
+                <p>Always play responsibly.</p>
+            </footer>
+        </main>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
