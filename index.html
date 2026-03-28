@@ -25,6 +25,18 @@
             </header>
             
             <section class="generator-section">
+                <div class="last-result" id="last-result-container">
+                    <h3>Last Result</h3>
+                    <div class="mini-numbers" id="last-numbers">
+                        <span>-</span>
+                        <span>-</span>
+                        <span>-</span>
+                        <span>-</span>
+                        <span>-</span>
+                        <span>-</span>
+                    </div>
+                </div>
+
                 <div class="lotto-numbers" id="lotto-display">
                     <span class="number">?</span>
                     <span class="number">?</span>
@@ -36,9 +48,16 @@
                 
                 <div class="controls">
                     <button id="generate-btn" class="primary-btn">
-                        <span class="btn-text">Generate Numbers</span>
-                        <span class="btn-icon">⚡</span>
+                        <span class="btn-text">Smart Generate</span>
+                        <span class="btn-icon">🧠</span>
                     </button>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <h3>Number Frequencies</h3>
+                <div class="stats-grid" id="stats-grid">
+                    <!-- Numbers 1-45 will be injected here -->
                 </div>
             </section>
             
